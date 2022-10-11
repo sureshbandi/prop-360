@@ -10,26 +10,36 @@ const Home: FC<HomeProps> = () => {
       id: "ptt1",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
+      rating: 3.5,
+      noOfReviews: "423",
     },
     {
       id: "ptt2",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
+      rating: 4.5,
+      noOfReviews: "423",
     },
     {
       id: "ptt3",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
+      rating: 3,
+      noOfReviews: "423",
     },
     {
       id: "ptt4",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
+      rating: 2.5,
+      noOfReviews: "423",
     },
     {
       id: "ptt5",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
+      rating: 4.5,
+      noOfReviews: "423",
     },
   ]);
   return (
@@ -41,6 +51,8 @@ const Home: FC<HomeProps> = () => {
             img={property.img}
             name={property.name}
             id={property.id}
+            rating={property.rating}
+            noOfReviews={property.noOfReviews}
           />
         ))}
       </ul>

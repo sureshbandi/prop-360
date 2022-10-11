@@ -2,11 +2,14 @@ import React, { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ReviewCard.scss";
 import Review from "../Review/Review";
+import Rating from "@mui/material/Rating";
 
 interface ReviewCardProps {
   id: string;
   name: string;
   img?: string;
+  rating: number;
+  noOfReviews: string;
 }
 
 const ReviewCard: FC<ReviewCardProps> = (props) => {
@@ -22,6 +25,10 @@ const ReviewCard: FC<ReviewCardProps> = (props) => {
             combined. The second and third parameters (flex-shrink and
             flex-basis) are optional. Default is 0 1 auto.{" "}
           </p>
+          <div className="rating">
+            <Rating name="read-only" value={props.rating} readOnly />
+            <span className="no-of-reviews">{props.noOfReviews} ratings</span>
+          </div>
           <button
             className="btn card__btn"
             onClick={() => setPopupStatus(!showPopup)}
