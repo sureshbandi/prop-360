@@ -13,6 +13,8 @@ const Home: FC<HomeProps> = () => {
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
       rating: 3.5,
       noOfReviews: "423",
+      address: "13048 N Verde River Dr #1",
+      cityPincode: "Fountain Hills, AZ 85268",
     },
     {
       id: "ptt2",
@@ -20,6 +22,8 @@ const Home: FC<HomeProps> = () => {
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
       rating: 4.5,
       noOfReviews: "423",
+      address: "13048 N Verde River Dr #1",
+      cityPincode: "Fountain Hills, AZ 85268",
     },
     {
       id: "ptt3",
@@ -27,6 +31,8 @@ const Home: FC<HomeProps> = () => {
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
       rating: 3,
       noOfReviews: "423",
+      address: "13048 N Verde River Dr #1",
+      cityPincode: "Fountain Hills, AZ 85268",
     },
     {
       id: "ptt4",
@@ -34,6 +40,8 @@ const Home: FC<HomeProps> = () => {
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
       rating: 2.5,
       noOfReviews: "423",
+      address: "13048 N Verde River Dr #1",
+      cityPincode: "Fountain Hills, AZ 85268",
     },
     {
       id: "ptt5",
@@ -41,6 +49,8 @@ const Home: FC<HomeProps> = () => {
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
       rating: 4.5,
       noOfReviews: "423",
+      address: "13048 N Verde River Dr #1",
+      cityPincode: "Fountain Hills, AZ 85268",
     },
   ]);
   return (
@@ -54,6 +64,8 @@ const Home: FC<HomeProps> = () => {
             id={property.id}
             rating={property.rating}
             noOfReviews={property.noOfReviews}
+            address={property.address}
+            cityPincode={property.cityPincode}
           />
         ))}
       </div>
