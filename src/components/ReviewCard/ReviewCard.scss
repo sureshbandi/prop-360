@@ -103,3 +103,10 @@ img {
   color: $gray-dark;
   padding: 0.5rem;
 }
+
+.rating {
+  display: flex;
+  .no-of-reviews {
+    margin-left: auto;
+  }
+}
