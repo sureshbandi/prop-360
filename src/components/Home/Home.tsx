@@ -7,27 +7,27 @@ interface HomeProps {}
 const Home: FC<HomeProps> = () => {
   const [properties, setProperties] = useState([
     {
-      id: "ptt",
+      id: "ptt1",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
     },
     {
-      id: "ptt",
+      id: "ptt2",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
     },
     {
-      id: "ptt",
+      id: "ptt3",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
     },
     {
-      id: "ptt",
+      id: "ptt4",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
     },
     {
-      id: "ptt",
+      id: "ptt5",
       name: "Prestiage Trade Tower",
       img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
     },

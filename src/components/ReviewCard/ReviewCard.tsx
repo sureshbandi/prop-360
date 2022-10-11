@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import "./ReviewCard.scss";
 import Review from "../Review/Review";
 
@@ -15,7 +16,7 @@ const ReviewCard: FC<ReviewCardProps> = (props) => {
       <div className="card">
         <img className="card__image" src={props.img} alt={props.name} />
         <div className="card__content">
-          <div className="card__title">{props.name}</div>
+          <Link className="card__title" to={"/detail/" + props.id}>{props.name}</Link>
           <p className="card__text">
             This is the shorthand for flex-grow, flex-shrink and flex-basis
             combined. The second and third parameters (flex-shrink and
