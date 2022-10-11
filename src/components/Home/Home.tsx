@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import "./Home.scss";
+import Header from "../Header/Header";
 import ReviewCard from "../ReviewCard/ReviewCard";
 
 interface HomeProps {}
@@ -44,8 +45,8 @@ const Home: FC<HomeProps> = () => {
   ]);
   return (
     <div className="Home">
-      Property Ratings{" "}
-      <ul className="cards">
+      <Header />
+      <div className="prop-cards">
         {properties.map((property) => (
           <ReviewCard
             img={property.img}
@@ -55,7 +56,7 @@ const Home: FC<HomeProps> = () => {
             noOfReviews={property.noOfReviews}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
