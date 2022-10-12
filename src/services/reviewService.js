@@ -50,8 +50,4 @@ function getReviewsByPropId(propId) {
   return reviews.filter((r) => r.propertyId == propId);
 }
 
-module.exports = {
-  getReviews,
-  createReview,
-  getReviewsByPropId,
-};
+export { getReviews, createReview, getReviewsByPropId };

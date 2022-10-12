@@ -6,19 +6,20 @@ import "./Detail.scss";
 
 import DetailHero from "../DetailHero/DetailHero";
 import DetailSkeleton from "../DetailSkeleton/DetailSkeleton";
-import DetailMap from "../DetailMap/DetailMap";
-// import ReviewCard from "../ReviewCard/ReviewCard";
+import { getPropertyByPropId } from "../../services";
+
 
 interface DetailProps {}
 
 const Detail: FC<DetailProps> = () => {
   const { id } = useParams();
+  let prop = getPropertyByPropId(id);
+  
   return (
     <div className="Detail">
       <Container maxWidth="lg">
-        <DetailHero propertyId="123" propertyName="Abcd"></DetailHero>
+        <DetailHero id={prop.id} name={prop.name} image={prop.img} address= {prop.address} pinCode={prop.cityPincode}></DetailHero>
         <DetailSkeleton />
-        <DetailMap/>
       </Container>
     </div>
   );

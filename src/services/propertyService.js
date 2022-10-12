@@ -74,8 +74,4 @@ function getPropertyByPropId(propId) {
   return properties.find((r) => r.id == propId);
 }
 
-module.exports = {
-  getProperties,
-  getPropertiesWithReviews,
-  getPropertyByPropId,
-};
+export { getProperties, getPropertiesWithReviews, getPropertyByPropId };
