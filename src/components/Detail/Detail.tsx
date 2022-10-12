@@ -11,7 +11,7 @@ const Detail: FC<DetailProps> = () => {
     <div className="Detail">
       Property Ratings{" "}
       <ul className="cards">
-        Welcome to details screen :)
+        Welcome to details screen :
         Property id is {id}
       </ul>
     </div>
