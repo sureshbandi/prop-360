@@ -12,6 +12,7 @@ const Home: FC<HomeProps> = () => {
       <div className="prop-cards">
         {properties.map((property) => (
           <ReviewCard
+            key={property.id}
             img={property.img}
             name={property.name}
             id={property.id}
