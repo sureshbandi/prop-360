@@ -1,57 +1,12 @@
 import React, { FC, useState } from "react";
 import "./Home.scss";
 import ReviewCard from "../ReviewCard/ReviewCard";
+import { getPropertiesWithReviews} from "../../services";
 
 interface HomeProps {}
 
 const Home: FC<HomeProps> = () => {
-  const [properties, setProperties] = useState([
-    {
-      id: "ptt1",
-      name: "Prestiage Trade Tower",
-      img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
-      rating: 3.5,
-      noOfReviews: "423",
-      address: "13048 N Verde River Dr #1",
-      cityPincode: "Fountain Hills, AZ 85268",
-    },
-    {
-      id: "ptt2",
-      name: "Prestiage Trade Tower",
-      img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
-      rating: 4.5,
-      noOfReviews: "423",
-      address: "13048 N Verde River Dr #1",
-      cityPincode: "Fountain Hills, AZ 85268",
-    },
-    {
-      id: "ptt3",
-      name: "Prestiage Trade Tower",
-      img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
-      rating: 3,
-      noOfReviews: "423",
-      address: "13048 N Verde River Dr #1",
-      cityPincode: "Fountain Hills, AZ 85268",
-    },
-    {
-      id: "ptt4",
-      name: "Prestiage Trade Tower",
-      img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
-      rating: 2.5,
-      noOfReviews: "423",
-      address: "13048 N Verde River Dr #1",
-      cityPincode: "Fountain Hills, AZ 85268",
-    },
-    {
-      id: "ptt5",
-      name: "Prestiage Trade Tower",
-      img: "https://s3-media0.fl.yelpcdn.com/bphoto/ynutRDfb4uJfQcdM-YNUxg/o.jpg",
-      rating: 4.5,
-      noOfReviews: "423",
-      address: "13048 N Verde River Dr #1",
-      cityPincode: "Fountain Hills, AZ 85268",
-    },
-  ]);
+  const [properties, setProperties] = useState(getPropertiesWithReviews());
   return (
     <div className="Home">
       <div className="prop-cards">
