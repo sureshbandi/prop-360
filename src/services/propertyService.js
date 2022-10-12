@@ -36,10 +36,18 @@ const properties = [
   },
 ];
 
+const KEY_PROPS = "properties";
+
+(function init() {
+  localStorage.setItem(KEY_PROPS, JSON.stringify(properties));
+})();
+
 const { getReviews } = require("./reviewService");
 
 function getProperties() {
-  return properties;
+  let p = localStorage.getItem(KEY_PROPS);
+  if (p) return JSON.parse(p);
+  return [];
 }
 
 function getPropertiesWithReviews() {

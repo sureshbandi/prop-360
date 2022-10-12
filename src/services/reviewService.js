@@ -27,20 +27,25 @@ const reviews = [
   },
 ];
 
-function getReviews() {
-  return reviews;
-}
+const KEY_REVIEWS = "reviews";
 
-function getPropAndReviews() {
-  return reviews;
+(function init() {
+  localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
+})();
+
+function getReviews() {
+  let r = localStorage.getItem(KEY_REVIEWS);
+  if (r) return JSON.parse(r);
+  return [];
 }
 
 function createReview(review) {
+  const reviews = getReviews();
   reviews.unshift(review);
+  localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
 }
 
 module.exports = {
   getReviews,
-  getPropAndReviews,
   createReview,
 };
