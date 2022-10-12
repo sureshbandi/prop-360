@@ -1,9 +1,5 @@
 const reviews = [
-  {
-    propertyId: "ptt1",
-    rating: 3.5,
-    noOfReviews: "423",
-  },
+  { propertyId: "ptt1", rating: 3.5, noOfReviews: "423" },
   {
     propertyId: "ptt1",
     rating: 3.5,
@@ -39,7 +35,12 @@ function getPropAndReviews() {
   return reviews;
 }
 
+function createReview(review) {
+  reviews.unshift(review);
+}
+
 module.exports = {
   getReviews,
   getPropAndReviews,
+  createReview,
 };
