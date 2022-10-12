@@ -3,8 +3,8 @@ const properties = [
     id: "ptt1",
     name: "Prestiage Trade Tower",
     img: "./images/prop-img-5.png",
-    address: "13048 N Verde River Dr #1",
-    cityPincode: "Fountain Hills, AZ 85268",
+    address: "Palace Rd, High Grounds, Sampangi Rama Nagar, ",
+    cityPincode: "Bengaluru, Karnataka 560001",
   },
   {
     id: "ptt2",
