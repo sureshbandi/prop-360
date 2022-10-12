@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 import "./Header.scss";
 interface HeaderProps {}
 
@@ -12,7 +12,7 @@ const Header: FC<HeaderProps> = () => {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <ApartmentIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -28,7 +28,7 @@ const Header: FC<HeaderProps> = () => {
               textDecoration: "none",
             }}
           >
-            PROPERTY-RATINGS
+            PROPERTY RATINGS
           </Typography>
         </Toolbar>
       </Container>

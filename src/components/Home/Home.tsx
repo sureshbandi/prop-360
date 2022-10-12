@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import "./Home.scss";
 import ReviewCard from "../ReviewCard/ReviewCard";
-import { getPropertiesWithReviews} from "../../services";
+import { getPropertiesWithReviews } from "../../services";
 
 interface HomeProps {}
 
