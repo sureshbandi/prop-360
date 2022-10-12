@@ -45,7 +45,13 @@ function createReview(review) {
   localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
 }
 
+function getReviewsByPropId(propId) {
+  const reviews = getReviews();
+  return reviews.filter((r) => r.propertyId == propId);
+}
+
 module.exports = {
   getReviews,
   createReview,
+  getReviewsByPropId,
 };
