@@ -1,24 +1,75 @@
-import React, { FC } from "react";
+import React, { useRef, useState, FC } from "react";
 import "./Review.scss";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
+import ValidationSnackbars from "../ValidationSnackbars/ValidationSnackbars";
 
-interface ReviewProps {
-  propertyId: string;
-  propertyName?: string;
-  setPopupStatus?: any;
-}
+interface ReviewProps {}
 
-const Review: FC<ReviewProps> = (props) => (
-  <div className="review">
-    <div className="review-content">
-      <div className="review-header">
-        <h2 className="review-header--heading">{props.propertyName}</h2>
-        <span
-          className="review-close"
-          onClick={() => props.setPopupStatus(false)}
-        ></span>
-      </div>
+const Review: FC<ReviewProps> = (props) => {
+  const reviewRef = useRef<HTMLInputElement>(null);
+  const [rating, setRating] = useState<number | null>(0);
+  const [error, setError] = useState(false);
+  const [isSubmitted, setSubmit] = useState(false);
+  function submit() {
+    setSubmit(true);
+    if (rating == null || rating < 1) {
+    }
+    if (reviewRef.current?.value == "" || reviewRef.current?.value == null) {
+      setError(true);
+    }
+  }
+  return (
+    <div className="review">
+      <Box
+        component="form"
+        className="review-content"
+        noValidate
+        autoComplete="off"
+      >
+        <div className="rating">
+          <span>Rating : </span>
+          <Rating
+            onChange={(event, newValue) => {
+              setRating(newValue);
+            }}
+            className="rating-star"
+            name="size-medium"
+          />
+        </div>
+        <TextField
+          id="outlined-basic"
+          label="Review"
+          multiline
+          fullWidth
+          minRows="6"
+          variant="outlined"
+          inputRef={reviewRef}
+          error={error}
+          onChange={() =>
+            reviewRef.current?.value == "" || reviewRef.current?.value == null
+              ? setError(true)
+              : setError(false)
+          }
+        />
+
+        <div className="save">
+          <Button className="save-btn" variant="contained" onClick={submit}>
+            Save
+          </Button>
+        </div>
+      </Box>
+      {isSubmitted && (
+        <ValidationSnackbars
+          open={!(rating != null && rating > 0)}
+          message="eweewe"
+          severity="error"
+        />
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export default Review;

@@ -8,4 +8,14 @@
 
 .Detail {
   margin-top: 100px;
+  display: flex;
+  flex-direction: row;
 }
+.detail-review-content {
+  width: 50%;
+}
+.add-review {
+  width: 40%;
+}
+
+//style={{ float: "right", paddingRight: "20px" }}

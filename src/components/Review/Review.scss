@@ -1,35 +1,34 @@
 .review {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: transparent;
+  margin: 10px 20px;
+}
+.review-content {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
-  text-align: center;
+}
+.rating {
+  display: flex;
+  margin-bottom: 10px;
+  &-star {
+    margin-left: 10px;
+  }
+}
+.category {
+  margin: 0;
+  margin-right: auto;
+}
+.MuiOutlinedInput-root {
+  &.Mui-focused {
+    border-color: red;
+  }
+}
 
-  &-content {
-    background-color: aliceblue;
-    margin: auto;
-    height: 90%;
-    width: fit-content;
-  }
-  &-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    &--heading {
-      margin: 20px;
-    }
-  }
-  &-close {
-    width: 30px;
+.save {
+  display: flex;
+  margin: 20px;
+  width: 100%;
+  &-btn {
     margin-left: auto;
-  }
-  &-close::before {
-    content: "x";
-    color: rgb(9, 9, 9);
-    font-weight: 300;
-    font-family: Arial, sans-serif;
+    width: 200px;
   }
 }
