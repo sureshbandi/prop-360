@@ -69,7 +69,9 @@ function getPropertiesWithReviews() {
   return p.length > 0 ? p : properties;
 }
 
-module.exports = {
-  getProperties,
-  getPropertiesWithReviews,
-};
+function getPropertyByPropId(propId) {
+  const properties = getProperties();
+  return properties.find((r) => r.id == propId);
+}
+
+export { getProperties, getPropertiesWithReviews, getPropertyByPropId };
