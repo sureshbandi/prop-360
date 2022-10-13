@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import "./LinkTabs.scss";
 import ReviewDetail from "../ReviewDetail/ReviewDetail";
 import { getReviewsByCategory } from "../../services/reviewService";
+import { REVIEW_TYPES } from "../../constants";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,7 +48,7 @@ function a11yProps(index: number) {
 
 const LinkTabs: FC<LinkTabsProps> = (props) => {
   const allReviews = props.reviews;
-  // const reviewTypes = Object.keys(REVIEW_TYPES);
+  const reviewTypes = Object.keys(REVIEW_TYPES);
   const [value, setValue] = React.useState(0);
   const [propertyReviews, setPropertyReviews] = useState<Array<ReviewModel>>(
     []
@@ -69,7 +70,7 @@ const LinkTabs: FC<LinkTabsProps> = (props) => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-    // console.log({allReviews});
+    console.log({allReviews});
     
     // const ar = allReviews.filter((a: any) => {
     //   return a.reviewType == reviewTypes[newValue]
@@ -93,7 +94,7 @@ const LinkTabs: FC<LinkTabsProps> = (props) => {
       </Box>
       <div className="tab-review-content">
         <TabPanel value={value} index={0}>
-          {reviews?.map((r) => (
+          {allReviews?.map((r:any) => (
             <ReviewDetail rating={r.rating} review={r.review} />
           ))}
         </TabPanel>
