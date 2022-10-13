@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./LinkTabs.scss";
 import ReviewDetail from "../ReviewDetail/ReviewDetail";
+import { getReviewsByCategory } from "../../services/reviewService";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -28,6 +30,7 @@ function TabPanel(props: TabPanelProps) {
 }
 interface LinkTabsProps {}
 interface ReviewModel {
+  propertyId: string;
   review: string;
   rating: number;
   date: Date;
@@ -46,23 +49,18 @@ const LinkTabs: FC<LinkTabsProps> = () => {
     []
   );
   const [societyReviews, setSocietyReviews] = useState<Array<ReviewModel>>([]);
+  const [localityReviews, setLocalityReviews] = useState<Array<ReviewModel>>(
+    []
+  );
+  const [ownerReviews, setOwnerReviews] = useState<Array<ReviewModel>>([]);
+  const [tenantReviews, setTenantReviews] = useState<Array<ReviewModel>>([]);
 
   useEffect(() => {
-    var lst_review = [
-      {
-        review:
-          "Came over to the house for a free estimate; arrived on time; came with all of the materials they needed; took their time to do a great job; cleaned up everything before they left so you could not tell they were even here. Everything looks great!",
-        rating: 5,
-        date: new Date(2022, 10, 30),
-      },
-      {
-        review:
-          "Thank you Welington Handyman.  You were very accommodating and arrived the SAME day I needed to have new curtains and rods install in two rooms.  Your work was very professional and efficient..  I will definately call upon your services for home repair services again soon",
-        rating: 5,
-        date: new Date(2022, 10, 12),
-      },
-    ];
-    setPropertyReviews(lst_review);
+    setPropertyReviews(getReviewsByCategory("property"));
+    setSocietyReviews(getReviewsByCategory("society"));
+    setLocalityReviews(getReviewsByCategory("locality"));
+    setOwnerReviews(getReviewsByCategory("owner"));
+    setTenantReviews(getReviewsByCategory("tenant"));
   }, []);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -92,16 +90,24 @@ const LinkTabs: FC<LinkTabsProps> = () => {
           ))}
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          {societyReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          {localityReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Item Four
+          {ownerReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={4}>
-          Item Five
+          {tenantReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
       </div>
     </Box>
