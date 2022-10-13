@@ -18,8 +18,9 @@ const Detail: FC<DetailProps> = () => {
 
   return (
     <div className="Detail">
-      <LinkTabs />
-      <div className="detail-review-content"></div>
+      <div className="review-menu">
+        <LinkTabs />
+      </div>
       <div className="add-review">
         <Button
           variant="outlined"
