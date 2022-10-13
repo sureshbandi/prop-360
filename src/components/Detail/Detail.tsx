@@ -15,6 +15,9 @@ const Detail: FC<DetailProps> = () => {
   const { id } = useParams();
   let prop = getPropertyByPropId(id);
   const [showReview, setShowReview] = useState(false);
+  const revi = getReviewsByPropId(id);
+  console.log({revi});
+  
 
   const addReview = function(obj: any){
     createReview({...obj, propertyId: id})

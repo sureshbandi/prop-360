@@ -1,10 +1,9 @@
 import { reviews } from "./stubData";
 
 const KEY_REVIEWS = "reviews";
-
 (function init() {
   let r = getReviews();
-  if (!r || r.lenght == 0)
+  if (!r || r.length == 0)
     localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
 })();
 
@@ -22,6 +21,7 @@ function createReview(review) {
 
 function getReviewsByPropId(propId) {
   const reviews = getReviews();
+  console.log({ reviews });
   return reviews.filter((r) => r.propertyId == propId);
 }
 

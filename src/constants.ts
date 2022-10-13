@@ -3,7 +3,7 @@ const REVIEW_TYPES = {
   "SOCIETY":"society",
   "LOCALITY":"locality",
   "OWNER":"owner",
-  "TENANT":"tenant"
+  "TENANT":"tenant",
 }
 
 export { REVIEW_TYPES }
