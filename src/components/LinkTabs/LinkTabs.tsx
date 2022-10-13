@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./LinkTabs.scss";
 import ReviewDetail from "../ReviewDetail/ReviewDetail";
+import { REVIEW_TYPES } from "../../constants";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -75,11 +76,14 @@ const LinkTabs: FC<LinkTabsProps> = () => {
           textColor="secondary"
           orientation="vertical"
         >
-          <Tab label="Property" {...a11yProps(0)} />
+          {Object.keys(REVIEW_TYPES).map((rt, i) => {
+            return <Tab label={rt} {...a11yProps(i)} />
+          })}
+        {/*   <Tab label="Property" {...a11yProps(0)} />
           <Tab label="Society" {...a11yProps(1)} />
           <Tab label="Locality" {...a11yProps(2)} />
           <Tab label="Owner" {...a11yProps(3)} />
-          <Tab label="Tenant" {...a11yProps(4)} />
+          <Tab label="Tenant" {...a11yProps(4)} /> */}
         </Tabs>
       </Box>
       <div className="tab-review-content">
