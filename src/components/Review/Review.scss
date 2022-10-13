@@ -30,5 +30,10 @@
   &-btn {
     margin-left: auto;
     width: 200px;
+    &.MuiButtonBase-root {
+      &.MuiButton-root {
+        background-color: #60666e;
+      }
+    }
   }
 }
