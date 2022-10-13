@@ -16,9 +16,11 @@ const Review: FC<ReviewProps> = (props) => {
   function submit() {
     setSubmit(true);
     if (rating == null || rating < 1) {
+      return;
     }
     if (reviewRef.current?.value == "" || reviewRef.current?.value == null) {
       setError(true);
+      return;
     }
   }
   return (
