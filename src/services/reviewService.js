@@ -1,29 +1,29 @@
 const reviews = [
-  { propertyId: "ptt1", rating: 3.5, noOfReviews: "423" },
+  { propertyId: "1", rating: 5, noOfReviews: "750" },
   {
-    propertyId: "ptt1",
+    propertyId: "1",
+    rating: 5,
+    noOfReviews: "150",
+  },
+  {
+    propertyId: "2",
+    rating: 4,
+    noOfReviews: "480",
+  },
+  {
+    propertyId: "3",
+    rating: 4.5,
+    noOfReviews: "610",
+  },
+  {
+    propertyId: "4",
     rating: 3.5,
-    noOfReviews: "424",
+    noOfReviews: "280",
   },
   {
-    propertyId: "ptt2",
-    rating: 4.5,
-    noOfReviews: "423",
-  },
-  {
-    propertyId: "ptt3",
+    propertyId: "5",
     rating: 3,
-    noOfReviews: "423",
-  },
-  {
-    propertyId: "ptt4",
-    rating: 2.5,
-    noOfReviews: "423",
-  },
-  {
-    propertyId: "ptt5",
-    rating: 4.5,
-    noOfReviews: "42443",
+    noOfReviews: "190",
   },
 ];
 

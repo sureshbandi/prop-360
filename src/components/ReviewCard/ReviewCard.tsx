@@ -23,13 +23,13 @@ const ReviewCard: FC<ReviewCardProps> = (props) => {
       <Card>
         <CardMedia
           component="img"
-          height="140"
+          height="160"
           image={props.img}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent sx={{ p:0, '&:last-child': { pb: 0 }, paddingTop: "10px", paddingLeft:"4px", paddingRight: "5px"}}>
           <Link to={"/detail/" + props.id}>
-            <Typography gutterBottom variant="h5" component="div" align="left">
+            <Typography gutterBottom variant="h6" component="div" align="left">
               {props.name}
             </Typography>
           </Link>
@@ -39,9 +39,12 @@ const ReviewCard: FC<ReviewCardProps> = (props) => {
           <Typography variant="body2" color="text.secondary" align="left">
             {props.cityPincode}
           </Typography>
+          
           <div className="rating">
             <Rating name="read-only" value={props.rating} readOnly />
-            <span className="no-of-reviews">{props.noOfReviews} ratings</span>
+            <Typography variant="body2" color="text.secondary" className="no-of-reviews">
+                {props.noOfReviews} reviews
+            </Typography>
           </div>
         </CardContent>
       </Card>
