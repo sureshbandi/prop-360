@@ -46,6 +46,11 @@ const LinkTabs: FC<LinkTabsProps> = () => {
     []
   );
   const [societyReviews, setSocietyReviews] = useState<Array<ReviewModel>>([]);
+  const [localityReviews, setLocalityReviews] = useState<Array<ReviewModel>>(
+    []
+  );
+  const [ownerReviews, setOwnerReviews] = useState<Array<ReviewModel>>([]);
+  const [tenantReviews, setTenantReviews] = useState<Array<ReviewModel>>([]);
 
   useEffect(() => {
     var lst_review = [
@@ -92,16 +97,24 @@ const LinkTabs: FC<LinkTabsProps> = () => {
           ))}
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          {societyReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          {localityReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Item Four
+          {ownerReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={4}>
-          Item Five
+          {tenantReviews?.map((r) => (
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
+          ))}
         </TabPanel>
       </div>
     </Box>
