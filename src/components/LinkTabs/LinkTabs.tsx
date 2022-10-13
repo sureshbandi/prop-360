@@ -27,7 +27,9 @@ function TabPanel(props: TabPanelProps) {
     </div>
   );
 }
-interface LinkTabsProps {}
+interface LinkTabsProps {
+  reviews: any
+}
 interface ReviewModel {
   review: string;
   rating: number;
@@ -40,12 +42,14 @@ function a11yProps(index: number) {
   };
 }
 
-const LinkTabs: FC<LinkTabsProps> = () => {
+const LinkTabs: FC<LinkTabsProps> = (props) => {
+  const allReviews = props.reviews;
+  const reviewTypes = Object.keys(REVIEW_TYPES);
   const [value, setValue] = React.useState(0);
   const [propertyReviews, setPropertyReviews] = useState<Array<ReviewModel>>(
     []
   );
-  const [societyReviews, setSocietyReviews] = useState<Array<ReviewModel>>([]);
+  const [reviews, setReviews] = useState<Array<ReviewModel>>([]);
 
   useEffect(() => {
     var lst_review = [
@@ -65,6 +69,12 @@ const LinkTabs: FC<LinkTabsProps> = () => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    console.log({allReviews});
+    
+    const ar = allReviews.filter((a: any) => {
+      return a.reviewType == reviewTypes[newValue]
+    });
+    setReviews(ar);
   };
 
   return (
@@ -76,19 +86,14 @@ const LinkTabs: FC<LinkTabsProps> = () => {
           textColor="secondary"
           orientation="vertical"
         >
-          {Object.keys(REVIEW_TYPES).map((rt, i) => {
+          {reviewTypes.map((rt, i) => {
             return <Tab label={rt} {...a11yProps(i)} />
           })}
-        {/*   <Tab label="Property" {...a11yProps(0)} />
-          <Tab label="Society" {...a11yProps(1)} />
-          <Tab label="Locality" {...a11yProps(2)} />
-          <Tab label="Owner" {...a11yProps(3)} />
-          <Tab label="Tenant" {...a11yProps(4)} /> */}
         </Tabs>
       </Box>
       <div className="tab-review-content">
         <TabPanel value={value} index={0}>
-          {propertyReviews?.map((r) => (
+          {reviews?.map((r) => (
             <ReviewDetail rating={r.rating} review={r.review} />
           ))}
         </TabPanel>

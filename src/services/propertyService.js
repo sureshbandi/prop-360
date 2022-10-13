@@ -40,7 +40,7 @@ const KEY_PROPS = "properties";
 
 (function init() {
   let p = getProperties();
-  if (!p) localStorage.setItem(KEY_PROPS, JSON.stringify(properties));
+  if (!p || p.length == 0) localStorage.setItem(KEY_PROPS, JSON.stringify(properties));
 })();
 
 const { getReviews } = require("./reviewService");

@@ -7,7 +7,7 @@ import Review from "../Review/Review";
 import "./Detail.scss";
 
 import LinkTabs from "../LinkTabs/LinkTabs";
-import { getPropertyByPropId, createReview } from "../../services";
+import { getPropertyByPropId, createReview, getReviewsByPropId } from "../../services";
 
 interface DetailProps {}
 
@@ -23,7 +23,7 @@ const Detail: FC<DetailProps> = () => {
   return (
     <div className="Detail">
       <div className="review-menu">
-        <LinkTabs />
+        <LinkTabs reviews ={getReviewsByPropId(id)}/>
       </div>
       <div className="add-review">
         <Button
