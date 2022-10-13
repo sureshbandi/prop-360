@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import "./ValidationSnackbars.scss";
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertColor, AlertProps } from "@mui/material/Alert";
