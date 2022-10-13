@@ -39,7 +39,8 @@ const properties = [
 const KEY_PROPS = "properties";
 
 (function init() {
-  localStorage.setItem(KEY_PROPS, JSON.stringify(properties));
+  let p = getProperties();
+  if (!p) localStorage.setItem(KEY_PROPS, JSON.stringify(properties));
 })();
 
 const { getReviews } = require("./reviewService");
@@ -58,10 +59,17 @@ function getPropertiesWithReviews() {
       let filteredReviews = reviews.filter((r) => r.propertyId == prop.id);
       let noOfReviews = 0;
       let rating = 0;
+      let noOfRatings = 0;
       filteredReviews.forEach((f) => {
-        noOfReviews += +f.noOfReviews;
-        rating += +f.rating;
+        if (f.review) noOfReviews++;
+        if (f.rating) {
+          noOfRatings++;
+          rating += +f.rating;
+        }
       });
+      if (noOfRatings != 0) {
+        rating = rating / noOfRatings;
+      }
 
       p.push({ ...prop, noOfReviews, rating });
     });

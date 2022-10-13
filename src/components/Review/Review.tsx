@@ -6,21 +6,29 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import ValidationSnackbars from "../ValidationSnackbars/ValidationSnackbars";
 
-interface ReviewProps {}
+interface ReviewProps { createReview?(data: any): any }
 
 const Review: FC<ReviewProps> = (props) => {
   const reviewRef = useRef<HTMLInputElement>(null);
   const [rating, setRating] = useState<number | null>(0);
   const [error, setError] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
+  
   function submit() {
-    setSubmit(true);
+    setSubmit(true);    
     if (rating == null || rating < 1) {
     }
-    if (reviewRef.current?.value == "" || reviewRef.current?.value == null) {
+    let review = reviewRef.current?.value;
+    if (review == "" || review == null) {
       setError(true);
-    }
+    }    
+    props.createReview && props.createReview({rating, review});
+    setSubmit(false);    
+
+    setRating(0);
+    // reviewRef.current.value = '';
   }
+
   return (
     <div className="review">
       <Box

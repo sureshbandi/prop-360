@@ -7,7 +7,7 @@ import Review from "../Review/Review";
 import "./Detail.scss";
 
 import LinkTabs from "../LinkTabs/LinkTabs";
-import { getPropertyByPropId } from "../../services";
+import { getPropertyByPropId, createReview } from "../../services";
 
 interface DetailProps {}
 
@@ -15,6 +15,10 @@ const Detail: FC<DetailProps> = () => {
   const { id } = useParams();
   let prop = getPropertyByPropId(id);
   const [showReview, setShowReview] = useState(false);
+
+  const addReview = function(obj: any){
+    createReview({...obj, propertyId: id})
+  }
 
   return (
     <div className="Detail">
@@ -31,7 +35,7 @@ const Detail: FC<DetailProps> = () => {
         >
           Write a review
         </Button>
-        {showReview && <Review />}
+        {showReview && <Review createReview = {addReview}/>}
       </div>
     </div>
   );
