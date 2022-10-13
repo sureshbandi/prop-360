@@ -11,7 +11,7 @@ import Divider from "@mui/material/Divider";
 interface ReviewDetailProps {
   rating: number;
   review: string;
-  date: Date;
+  date?: Date;
 }
 
 const ReviewDetail: FC<ReviewDetailProps> = (props) => {
@@ -22,8 +22,8 @@ const ReviewDetail: FC<ReviewDetailProps> = (props) => {
           <div className="review-detail-rating">
             <Rating name="read-only" value={props.rating} readOnly />
             <span className="review-detail-rating-date">
-              {props.date.getMonth()}/{props.date.getDay()}/
-              {props.date.getFullYear()}
+              {props.date?.getMonth()}/{props.date?.getDay()}/
+              {props.date?.getFullYear()}
             </span>
           </div>
 

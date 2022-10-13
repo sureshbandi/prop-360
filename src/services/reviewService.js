@@ -1,40 +1,11 @@
-const reviews = [
-  { propertyId: "ptt1", rating: 3.5, review: "423", reviewType: "society" },
-  {
-    propertyId: "ptt1",
-    rating: 3.5,
-    review: "424",
-    reviewType: "property",
-  },
-  {
-    propertyId: "ptt2",
-    rating: 4.5,
-    review: "423",
-    reviewType: "property",
-  },
-  {
-    propertyId: "ptt3",
-    rating: 3,
-    review: "423",
-    reviewType: "society",
-  },
-  {
-    propertyId: "ptt4",
-    rating: 2.5,
-    review: "423",
-  },
-  {
-    propertyId: "ptt5",
-    rating: 4.5,
-    review: "42443",
-  },
-];
+import { reviews } from "./stubData";
 
 const KEY_REVIEWS = "reviews";
 
 (function init() {
   let r = getReviews();
-  if (!r || r.lenght == 0) localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
+  if (!r || r.lenght == 0)
+    localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
 })();
 
 function getReviews() {

@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
 import Header from "./components/Header/Header";
 import Review from "./components/Review/Review";
+import * as s from "./services";
 
 function App() {
   return (
