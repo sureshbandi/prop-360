@@ -4,7 +4,7 @@ const properties = [
     name: "Prestiage Trade Tower",
     img: "./images/prop-img-5.png",
     address: "Palace Rd, High Grounds, Sampangi Rama Nagar, ",
-    cityPincode: "Bengaluru, Karnataka 560001",
+    cityPincode: "Bengaluru, KA 560001",
   },
   {
     id: "ptt2",
@@ -15,7 +15,7 @@ const properties = [
   },
   {
     id: "ptt3",
-    name: "Oakland, CA Real Estate",
+    name: "Oakland, CA ",
     img: "./images/prop-img-3.png",
     address: "3405 Helen St #4,",
     cityPincode: "Oakland, CA 94608",
