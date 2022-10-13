@@ -41,7 +41,10 @@ function a11yProps(index: number) {
 
 const LinkTabs: FC<LinkTabsProps> = () => {
   const [value, setValue] = React.useState(0);
-  const [cat_01_review, setCat01Reviews] = useState<Array<ReviewModel>>([]);
+  const [propertyReviews, setPropertyReviews] = useState<Array<ReviewModel>>(
+    []
+  );
+  const [societyReviews, setSocietyReviews] = useState<Array<ReviewModel>>([]);
 
   useEffect(() => {
     var lst_review = [
@@ -56,7 +59,7 @@ const LinkTabs: FC<LinkTabsProps> = () => {
         rating: 5,
       },
     ];
-    setCat01Reviews(lst_review);
+    setPropertyReviews(lst_review);
   }, []);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -81,7 +84,7 @@ const LinkTabs: FC<LinkTabsProps> = () => {
       </Box>
       <div className="tab-review-content">
         <TabPanel value={value} index={0}>
-          {cat_01_review?.map((r) => (
+          {propertyReviews?.map((r) => (
             <ReviewDetail rating={r.rating} review={r.review} />
           ))}
         </TabPanel>
