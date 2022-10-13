@@ -1,4 +1,4 @@
-const REVIEW_TYPES = {
+const REVIEW_TYPES: Object = {
   "PROPERTY":"property",
   "SOCIETY":"society",
   "LOCALITY":"locality",
