@@ -30,6 +30,7 @@ interface LinkTabsProps {}
 interface ReviewModel {
   review: string;
   rating: number;
+  date: Date;
 }
 
 function a11yProps(index: number) {
@@ -52,11 +53,13 @@ const LinkTabs: FC<LinkTabsProps> = () => {
         review:
           "Came over to the house for a free estimate; arrived on time; came with all of the materials they needed; took their time to do a great job; cleaned up everything before they left so you could not tell they were even here. Everything looks great!",
         rating: 5,
+        date: new Date(2022, 10, 30),
       },
       {
         review:
           "Thank you Welington Handyman.  You were very accommodating and arrived the SAME day I needed to have new curtains and rods install in two rooms.  Your work was very professional and efficient..  I will definately call upon your services for home repair services again soon",
         rating: 5,
+        date: new Date(2022, 10, 12),
       },
     ];
     setPropertyReviews(lst_review);
@@ -85,7 +88,7 @@ const LinkTabs: FC<LinkTabsProps> = () => {
       <div className="tab-review-content">
         <TabPanel value={value} index={0}>
           {propertyReviews?.map((r) => (
-            <ReviewDetail rating={r.rating} review={r.review} />
+            <ReviewDetail rating={r.rating} review={r.review} date={r.date} />
           ))}
         </TabPanel>
         <TabPanel value={value} index={1}>

@@ -59,7 +59,7 @@ const Review: FC<ReviewProps> = (props) => {
 
         <div className="save">
           <Button className="save-btn" variant="contained" onClick={submit}>
-            Save
+            Post Review
           </Button>
         </div>
       </Box>
