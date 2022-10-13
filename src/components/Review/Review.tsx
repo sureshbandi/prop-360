@@ -1,18 +1,23 @@
-import React, { useRef, useState, FC } from "react";
+import React, { useRef, useState, FC, useContext } from "react";
 import "./Review.scss";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import ValidationSnackbars from "../ValidationSnackbars/ValidationSnackbars";
-
-interface ReviewProps {}
+import { createReview } from "../../services/reviewService";
+import { ReviewContext, ReviewContextType } from "../Detail/Detail";
+import { categories } from "../../services/reviewService";
+interface ReviewProps {
+  setShowReview: any;
+}
 
 const Review: FC<ReviewProps> = (props) => {
   const reviewRef = useRef<HTMLInputElement>(null);
   const [rating, setRating] = useState<number | null>(0);
   const [error, setError] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
+  const { reviews, addReview } = useContext(ReviewContext) as ReviewContextType;
   function submit() {
     setSubmit(true);
     if (rating == null || rating < 1) {
@@ -22,6 +27,24 @@ const Review: FC<ReviewProps> = (props) => {
       setError(true);
       return;
     }
+    createReview({
+      review: reviewRef.current.value,
+      rating: rating,
+      date: new Date(),
+      propertyId: "ptt1",
+    });
+    let tab = localStorage.getItem("SELECTED_TAB");
+    const index = tab == null ? 0 : tab;
+    const category = categories[parseInt(index.toString())];
+    addReview({
+      review: reviewRef.current.value,
+      rating: rating,
+      date: new Date(),
+      propertyId: "ptt1",
+      category: category,
+    });
+    debugger;
+    props.setShowReview();
   }
   return (
     <div className="review">
@@ -43,7 +66,7 @@ const Review: FC<ReviewProps> = (props) => {
         </div>
         <TextField
           id="outlined-basic"
-          label="Review"
+          label="write a review..."
           multiline
           fullWidth
           minRows="6"
@@ -66,7 +89,7 @@ const Review: FC<ReviewProps> = (props) => {
       {isSubmitted && (
         <ValidationSnackbars
           open={!(rating != null && rating > 0)}
-          message="eweewe"
+          message="Please select rating"
           severity="error"
         />
       )}

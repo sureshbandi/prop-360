@@ -17,5 +17,9 @@
 .add-review {
   width: 40%;
 }
+.write-review {
+  display: flex;
+  justify-content: right;
+}
 
 //style={{ float: "right", paddingRight: "20px" }}

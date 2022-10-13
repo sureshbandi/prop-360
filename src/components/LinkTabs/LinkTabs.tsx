@@ -1,11 +1,12 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./LinkTabs.scss";
 import ReviewDetail from "../ReviewDetail/ReviewDetail";
-import { getReviewsByCategory } from "../../services/reviewService";
+import { getReviewsByCategory_context } from "../../services/reviewService";
+import { ReviewContext, ReviewContextType } from "../Detail/Detail";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -28,12 +29,15 @@ function TabPanel(props: TabPanelProps) {
     </div>
   );
 }
-interface LinkTabsProps {}
-interface ReviewModel {
+interface LinkTabsProps {
+  isUpdated: number;
+}
+export interface ReviewModel {
   propertyId: string;
   review: string;
   rating: number;
   date: Date;
+  category: string;
 }
 
 function a11yProps(index: number) {
@@ -45,6 +49,7 @@ function a11yProps(index: number) {
 
 const LinkTabs: FC<LinkTabsProps> = () => {
   const [value, setValue] = React.useState(0);
+  const { reviews, addReview } = useContext(ReviewContext) as ReviewContextType;
   const [propertyReviews, setPropertyReviews] = useState<Array<ReviewModel>>(
     []
   );
@@ -56,15 +61,16 @@ const LinkTabs: FC<LinkTabsProps> = () => {
   const [tenantReviews, setTenantReviews] = useState<Array<ReviewModel>>([]);
 
   useEffect(() => {
-    setPropertyReviews(getReviewsByCategory("property"));
-    setSocietyReviews(getReviewsByCategory("society"));
-    setLocalityReviews(getReviewsByCategory("locality"));
-    setOwnerReviews(getReviewsByCategory("owner"));
-    setTenantReviews(getReviewsByCategory("tenant"));
-  }, []);
+    setPropertyReviews(getReviewsByCategory_context("property", reviews));
+    setSocietyReviews(getReviewsByCategory_context("society", reviews));
+    setLocalityReviews(getReviewsByCategory_context("locality", reviews));
+    setOwnerReviews(getReviewsByCategory_context("owner", reviews));
+    setTenantReviews(getReviewsByCategory_context("tenant", reviews));
+  }, [reviews]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    localStorage.setItem("SELECTED_TAB", JSON.stringify(newValue));
   };
 
   return (

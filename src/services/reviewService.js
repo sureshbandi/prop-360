@@ -92,11 +92,21 @@ const lst_reviews = [
     category: "tenant",
   },
 ];
+export const categories = [
+  "property",
+  "society",
+  "locality",
+  "owner",
+  "tenant",
+];
 
 const KEY_REVIEWS = "reviews";
+const KEY_ALL_REVIEWS = "all_reviews";
 
 (function init() {
   localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
+  localStorage.setItem(KEY_ALL_REVIEWS, JSON.stringify(lst_reviews));
+  localStorage.setItem("SELECTED_TAB", 0);
 })();
 
 function getReviews() {
@@ -104,11 +114,18 @@ function getReviews() {
   if (r) return JSON.parse(r);
   return [];
 }
+function getAllReviews() {
+  let r = localStorage.getItem(KEY_ALL_REVIEWS);
+  if (r) return JSON.parse(r);
+  return [];
+}
 
 function createReview(review) {
-  const reviews = getReviews();
-  reviews.unshift(review);
-  localStorage.setItem(KEY_REVIEWS, JSON.stringify(reviews));
+  const reviews = getAllReviews();
+  let tab = localStorage.getItem("SELECTED_TAB");
+  const category = categories[tab];
+  reviews.unshift({ ...review, category: category });
+  localStorage.setItem(KEY_ALL_REVIEWS, JSON.stringify(reviews));
 }
 
 function getReviewsByPropId(propId) {
@@ -118,7 +135,35 @@ function getReviewsByPropId(propId) {
 
 function getReviewsByCategory(category) {
   const reviews = lst_reviews;
-  return reviews.filter((r) => r.category == category);
+  return reviews
+    .filter((r) => r.category == category)
+    .sort(function (a, b) {
+      const date1 = new Date(a);
+      const date2 = new Date(b);
+
+      return date1 - date2;
+    })
+    .reverse();
 }
 
-export { getReviews, createReview, getReviewsByPropId, getReviewsByCategory };
+function getReviewsByCategory_context(category, data) {
+  const reviews = data;
+  return reviews
+    .filter((r) => r.category == category)
+    .sort(function (a, b) {
+      const date1 = new Date(a);
+      const date2 = new Date(b);
+
+      return date1 - date2;
+    })
+    .reverse();
+}
+
+export {
+  getReviews,
+  createReview,
+  getReviewsByPropId,
+  getReviewsByCategory,
+  lst_reviews,
+  getReviewsByCategory_context,
+};
