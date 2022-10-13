@@ -17,6 +17,7 @@ const Review: FC<ReviewProps> = (props) => {
   function submit() {
     setSubmit(true);    
     if (rating == null || rating < 1) {
+      return;
     }
     let review = reviewRef.current?.value;
     if (review == "" || review == null) {
